@@ -1,6 +1,6 @@
 # Keep Claude Code Busy
 
-> **[中文](README_CN.md) | [English](README.md) | Français | [日本語](README_JA.md) | [Español](README_ES.md)**
+> **[中文](README.md) | [English](README_EN.md) | Français | [日本語](README_JA.md) | [Español](README_ES.md)**
 
 Un outil de surveillance de région d'écran Windows conçu pour maintenir Claude Code actif pendant que vous dormez.
 

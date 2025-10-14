@@ -1,6 +1,6 @@
 # Keep Claude Code Busy
 
-> **[中文](README_CN.md) | [English](README.md) | [Français](README_FR.md) | 日本語 | [Español](README_ES.md)**
+> **[中文](README.md) | [English](README_EN.md) | [Français](README_FR.md) | 日本語 | [Español](README_ES.md)**
 
 Claude Code を寝ている間も継続的に動作させるために設計された Windows 画面領域監視ツール。
 

@@ -1,200 +1,215 @@
-# Keep Claude Code Busy
+# Keep Claude Code Busy (让 Claude Code 保持忙碌)
 
-> **[中文](README_CN.md) | English | [Français](README_FR.md) | [日本語](README_JA.md) | [Español](README_ES.md)**
+> **中文 | [English](README_EN.md) | [Français](README_FR.md) | [日本語](README_JA.md) | [Español](README_ES.md)**
 
-A Windows screen region monitoring tool designed to keep Claude Code working continuously while you sleep.
+一个 Windows 平台下的屏幕区域监控工具，专为让 Claude Code 在你睡觉时持续工作而设计。
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![版本](https://img.shields.io/badge/版本-1.0.0-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.7+-green.svg)
-![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
-![License](https://img.shields.io/badge/license-MIT-orange.svg)
+![平台](https://img.shields.io/badge/平台-Windows-lightgrey.svg)
+![许可证](https://img.shields.io/badge/许可证-MIT-orange.svg)
 
-## ✨ Features
+## ✨ 功能特点
 
-- ✅ **Visual Region Selection** - Draw a rectangle to select the monitoring area
-- ✅ **Real-time Monitoring** - Detects screen changes using image comparison
-- ✅ **Smart Detection** - Auto-triggers when no changes detected for 30-120 seconds
-- ✅ **Automatic Messaging** - Sends commands to Claude Code automatically
-- ✅ **Configuration Persistence** - Remembers your settings (optional)
-- ✅ **Clean Exit** - Stop monitoring anytime when you wake up
-- ✅ **One-Click Package** - Build standalone EXE file
+- ✅ **可视化区域选择** - 画矩形框选择监控区域
+- ✅ **实时监控** - 使用图像对比检测画面变化
+- ✅ **智能检测** - 30-120秒内无变化时自动触发
+- ✅ **自动发送消息** - 自动向 Claude Code 发送指令
+- ✅ **配置持久化** - 记住你的设置（可选）
+- ✅ **干净退出** - 醒来后随时停止监控
+- ✅ **一键打包** - 生成独立的 EXE 文件
 
-## 🚀 Quick Start
+## 🚀 快速开始
 
-### Installation
+### 第一步：克隆仓库
 
-1. **Install dependencies**:
+```bash
+# 使用 HTTPS
+git clone https://github.com/tinyvane/KeepClaudeCodeBusy.git
+
+# 或使用 SSH
+git clone git@github.com:tinyvane/KeepClaudeCodeBusy.git
+
+# 进入项目目录
+cd KeepClaudeCodeBusy
+```
+
+### 第二步：安装依赖
+
+1. **安装 Python 依赖**:
 ```bash
 install.bat
 ```
-or manually:
+或手动安装:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. **Run the program**:
+### 第三步：运行程序
+
+**方式 1: 直接运行 Python 脚本**
 ```bash
 python monitor_tool.py
 ```
-or double-click `run.bat`
+或双击 `run.bat`
 
-### Build EXE (Recommended)
+**方式 2: 打包成 EXE（推荐日常使用）**
 
 ```bash
 build_onedir.bat
 ```
 
-The executable will be in `dist/monitor_tool/monitor_tool.exe`
+可执行文件将在 `dist/monitor_tool/monitor_tool.exe`
 
-## 📖 How to Use
+## 📖 使用方法
 
-### Step 1: Select Monitoring Region
+### 步骤 1: 选择监控区域
 
-1. Click "选择区域" (Select Region) button
-2. Screen becomes semi-transparent
-3. **Drag** to draw a rectangle around Claude Code's output area
-4. **Press Enter** to confirm (or ESC to cancel)
+1. 点击"选择区域"按钮
+2. 屏幕变为半透明
+3. **拖动**鼠标在 Claude Code 输出区域画矩形
+4. **按 Enter** 确认（或 ESC 取消）
 
-### Step 2: Select Click Position
+### 步骤 2: 选择点击位置
 
-1. After confirming region, screen stays semi-transparent
-2. **Click** on Claude Code's input field location
-3. **Press Enter** again to confirm
+1. 确认区域后，屏幕保持半透明
+2. **点击** Claude Code 输入框的位置
+3. **再次按 Enter** 确认
 
-### Step 3: Configure Parameters
+### 步骤 3: 配置参数
 
-- **Check Interval**: How often to check for changes (10-60s, default: 30s)
-- **Trigger Time**: How long with no changes before triggering (30-120s, default: 45s)
-- **Similarity Threshold**: Image comparison strictness (0.90-0.99, default: 0.98)
-- **Remember Position**: Auto-restore region on next startup (checkbox)
-- **Message**: Text to send when triggered (supports Chinese)
+- **检查间隔**: 多久检查一次变化（10-60秒，默认30秒）
+- **触发时间**: 无变化多久后触发（30-120秒，默认45秒）
+- **相似度阈值**: 图像对比严格度（0.90-0.99，默认0.98）
+- **记忆位置**: 下次启动自动恢复区域（复选框）
+- **发送消息**: 触发时发送的文字（支持中文）
 
-### Step 4: Start Monitoring
+### 步骤 4: 开始监控
 
-Click "开始监控" (Start Monitoring) button and go to sleep! 😴
+点击"开始监控"按钮，然后去睡觉！😴
 
-### Step 5: Stop When You Wake Up
+### 步骤 5: 醒来后停止
 
-Click "停止监控" (Stop Monitoring) button or close the window.
+点击"停止监控"按钮或关闭窗口。
 
-## 🎯 How It Works
+## 🎯 工作原理
 
-1. Takes screenshots of the monitored region every N seconds
-2. Compares current screenshot with previous one
-3. If changes detected → reset timer
-4. If NO changes for M seconds → automatically:
-   - Click the input field
-   - Paste message using Ctrl+V (supports Chinese)
-   - Press Enter to send
-   - Continue monitoring
+1. 每隔 N 秒截取监控区域的图像
+2. 将当前图像与上一次对比
+3. 如果检测到变化 → 重置计时器
+4. 如果 M 秒内无变化 → 自动:
+   - 点击输入框
+   - 使用 Ctrl+V 粘贴消息（支持中文）
+   - 按 Enter 发送
+   - 继续监控
 
-## ⚙️ Configuration
+## ⚙️ 配置
 
-Settings are saved to `monitor_config.json`:
-- Selected region coordinates
-- Click position
-- Check interval
-- Trigger duration
-- Similarity threshold
-- Remember position setting
-- Custom message
+设置保存在 `monitor_config.json`:
+- 选择的区域坐标
+- 点击位置
+- 检查间隔
+- 触发时间
+- 相似度阈值
+- 记忆位置设置
+- 自定义消息
 
-## 📁 Project Structure
+## 📁 项目结构
 
 ```
 KeepClaudeCodeBusy/
-├── monitor_tool.py              # Main program (GUI)
-├── screen_monitor.py            # Screen monitoring module
-├── automation_controller.py     # Automation control
-├── region_selector.py           # Region selection UI
-├── border_overlay.py            # Border display
-├── requirements.txt             # Python dependencies
-├── install.bat                  # Install dependencies
-├── run.bat                      # Quick start script
-├── build_onedir.bat             # Build EXE
-├── README.md                    # Documentation (English)
-├── README_CN.md                 # Documentation (Chinese)
-├── USAGE_GUIDE.md               # Detailed usage guide
-└── UPDATE_LOG.md                # Version changelog
+├── monitor_tool.py              # 主程序（GUI）
+├── screen_monitor.py            # 屏幕监控模块
+├── automation_controller.py     # 自动化控制
+├── region_selector.py           # 区域选择界面
+├── border_overlay.py            # 边框显示
+├── requirements.txt             # Python 依赖
+├── install.bat                  # 安装依赖
+├── run.bat                      # 快速启动脚本
+├── build_onedir.bat             # 打包 EXE
+├── README.md                    # 文档（中文）
+├── README_EN.md                 # 文档（英语）
+├── USAGE_GUIDE.md               # 详细使用指南
+└── UPDATE_LOG.md                # 版本更新日志
 ```
 
-## 💡 Tips & Best Practices
+## 💡 提示与最佳实践
 
-### Region Selection
-- Select Claude Code's main output area
-- Avoid areas with blinking cursors or timestamps
-- Region should be large enough (at least 100x100 pixels)
+### 区域选择
+- 选择 Claude Code 的主要输出区域
+- 避免包含闪烁光标或时间戳的区域
+- 区域应足够大（至少 100x100 像素）
 
-### Parameter Tuning
-- **Too sensitive?** → Increase threshold to 0.99 or increase trigger time
-- **Not triggering?** → Decrease threshold to 0.95 or reduce trigger time
-- **For long tasks** → Set trigger time to 60-90 seconds
-- **For quick responses** → Set trigger time to 30-45 seconds
+### 参数调整
+- **太敏感?** → 提高阈值到 0.99 或增加触发时间
+- **不触发?** → 降低阈值到 0.95 或减少触发时间
+- **长任务** → 设置触发时间为 60-90 秒
+- **快速响应** → 设置触发时间为 30-45 秒
 
-### Before Sleeping Checklist
-- ✅ Region and click position correctly selected
-- ✅ Claude Code window is visible (not minimized)
-- ✅ Computer power settings prevent auto-sleep
-- ✅ Monitoring started successfully
+### 睡前检查清单
+- ✅ 区域和点击位置正确选择
+- ✅ Claude Code 窗口可见（未最小化）
+- ✅ 电脑电源设置防止自动休眠
+- ✅ 监控成功启动
 
-## 🛠️ Tech Stack
+## 🛠️ 技术栈
 
 - **Python 3.7+**
-- **tkinter** - GUI framework
-- **pyautogui** - Screenshot and automation
-- **opencv-python** - Image comparison
-- **Pillow** - Image processing
-- **pyperclip** - Clipboard operations
+- **tkinter** - GUI 框架
+- **pyautogui** - 截图和自动化
+- **opencv-python** - 图像对比
+- **Pillow** - 图像处理
+- **pyperclip** - 剪贴板操作
 - **pywin32** - Windows API
-- **PyInstaller** - EXE packaging
+- **PyInstaller** - EXE 打包
 
-## 🐛 Troubleshooting
+## 🐛 故障排除
 
-### Issue: Program can't find Claude Code window
-**Solution**: Ensure the window is open and visible, not minimized.
+### 问题: 程序找不到 Claude Code 窗口
+**解决方案**: 确保窗口打开且可见，未最小化。
 
-### Issue: Automation doesn't work
-**Solution**:
-- Don't move mouse to screen corners (PyAutoGUI safety feature)
-- Run as administrator if needed
-- Ensure no other windows cover Claude Code
+### 问题: 自动化不工作
+**解决方案**:
+- 不要移动鼠标到屏幕角落（PyAutoGUI 安全机制）
+- 必要时以管理员身份运行
+- 确保没有其他窗口覆盖 Claude Code
 
-### Issue: Always triggering (false positives)
-**Solution**:
-- Increase trigger time
-- Increase similarity threshold (0.99)
-- Re-select region without dynamic elements
+### 问题: 总是触发（误判）
+**解决方案**:
+- 增加触发时间
+- 提高相似度阈值（0.99）
+- 重新选择区域，避免动态元素
 
-### Issue: Never triggering (false negatives)
-**Solution**:
-- Decrease threshold (0.95)
-- Check if region is correctly selected
-- Verify monitoring is running (check status)
+### 问题: 从不触发（漏判）
+**解决方案**:
+- 降低阈值（0.95）
+- 检查区域是否正确选择
+- 验证监控正在运行（检查状态）
 
-## 📝 Advanced Features
+## 📝 高级功能
 
-### Clear Configuration
-Click "清除配置" (Clear Config) button to reset all settings to defaults.
+### 清除配置
+点击"清除配置"按钮重置所有设置为默认值。
 
-### Remember Position
-Toggle the checkbox to control whether the program remembers your region selection on next startup.
+### 记忆位置
+切换复选框控制程序是否在下次启动时记住区域选择。
 
-## 🤝 Contributing
+## 🤝 贡献
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+欢迎贡献！请随时提交 Pull Request。
 
-## 📄 License
+## 📄 许可证
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件。
 
-## ⚠️ Disclaimer
+## ⚠️ 免责声明
 
-This tool is for personal use only to improve productivity. Use responsibly and in accordance with all applicable terms of service.
+本工具仅供个人使用以提高生产力。请负责任地使用，并遵守所有适用的服务条款。
 
-## 🌟 Star History
+## 🌟 Star 历史
 
-If you find this project useful, please consider giving it a star! ⭐
+如果你觉得这个项目有用，请考虑给它一个 star！⭐
 
 ---
 
-Made with ❤️ for the Claude Code community
+用 ❤️ 为 Claude Code 社区制作
