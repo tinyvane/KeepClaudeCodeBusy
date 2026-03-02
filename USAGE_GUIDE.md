@@ -66,7 +66,7 @@ python monitor_tool.py
   - 不勾选：每次启动需要重新选择
 
 #### 发送消息
-- **默认**: "请继续完成没有实现的TODO内容或者你认为的更新"
+- **默认**: "Go ahead with ur todo list. Remeber to update the PROJECT_PLAN.MD and essestials files, stick to the Claude.md file and git push for significant files changes."
 - **说明**: 触发时自动发送的文字（支持中文）
 
 ### 步骤 5: 开始监控
@@ -191,7 +191,7 @@ A:
   "max_duration": 45,
   "threshold": 0.98,
   "remember_position": true,
-  "message": "请继续完成没有实现的TODO内容或者你认为的更新"
+  "message": "Go ahead with ur todo list. Remeber to update the PROJECT_PLAN.MD and essestials files, stick to the Claude.md file and git push for significant files changes."
 }
 ```
 

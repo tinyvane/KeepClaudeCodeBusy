@@ -16,7 +16,7 @@ class AutomationController:
         pyautogui.PAUSE = 0.5  # 每个操作之间暂停0.5秒
 
         # 要发送的默认消息
-        self.default_message = "请继续完成没有实现的TODO内容或者你认为的更新"
+        self.default_message = "Go ahead with ur todo list. Remeber to update the PROJECT_PLAN.MD and essestials files, stick to the Claude.md file and git push for significant files changes."
 
     def find_window_by_title(self, title_keywords):
         """

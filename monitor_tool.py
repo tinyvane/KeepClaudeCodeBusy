@@ -22,7 +22,7 @@ class MonitorToolGUI:
         self.root = root
         self.root.title("Claude Code 监控工具")
         self.root.geometry("600x680")  # 增加高度以显示所有内容，包括新的复选框
-        self.root.resizable(False, False)
+        self.root.resizable(True, True)
 
         # 数据
         self.selected_region = None
@@ -181,7 +181,7 @@ class MonitorToolGUI:
         tk.Label(message_frame, text="发送消息:").pack(anchor=tk.W, pady=5)
         self.message_text = tk.Text(message_frame, height=3, width=50)
         self.message_text.pack(fill=tk.X, pady=5)
-        self.message_text.insert("1.0", "请继续完成没有实现的TODO内容或者你认为的更新")
+        self.message_text.insert("1.0", "Go ahead with ur todo list. Remeber to update the PROJECT_PLAN.MD and essestials files, stick to the Claude.md file and git push for significant files changes.")
 
         # 控制按钮部分
         control_frame = tk.LabelFrame(main_frame, text="3. 启动监控", font=("Arial", 11, "bold"), padx=10, pady=10)
@@ -268,7 +268,7 @@ class MonitorToolGUI:
             self.threshold_var.set(0.98)
             self.remember_position_var.set(True)
             self.message_text.delete("1.0", tk.END)
-            self.message_text.insert("1.0", "请继续完成没有实现的TODO内容或者你认为的更新")
+            self.message_text.insert("1.0", "Go ahead with ur todo list. Remeber to update the PROJECT_PLAN.MD and essestials files, stick to the Claude.md file and git push for significant files changes.")
 
             # 删除配置文件
             try:
